@@ -6,6 +6,8 @@ from app.api.routers.ParsingCVs import router as ParsingCVsRouter
 from app.api.routers.GetAllCandidaData import router as GetAllCandidaDataRouter
 from app.api.routers.GetDataByCandidaId import router as GetDataByCandidaIdRouter
 
+from app.api.routers.Test import router as TestRouter
+
 app = FastAPI()
 
 origins = [
@@ -25,6 +27,8 @@ app.add_middleware(
 app.include_router(ParsingCVsRouter, prefix="/api/v1", tags=["CV Parser"])
 app.include_router(GetAllCandidaDataRouter, tags=["Get data"])
 app.include_router(GetDataByCandidaIdRouter, tags=["Get data"])
+
+app.include_router(TestRouter)
 
 @app.get("/")
 def read_root():
